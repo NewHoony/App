@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block con %}
+<style>
+    input[type="text"], input[type="file"], input[type="textarea"] {
+    width: 500px;
+  }
+  </style>
+
+<div class="container" style="padding-top: 300px; color: white;">
+    <h1>Upload Page</h1>
+    <a href ="{% url 'myapp:index' %}"><button class="btn btn-outline-light" style="padding-bottom: 10px; float: right;">뒤로가기</button></a>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <hr>
+        <button type="submit" class="btn btn-outline-light">Upload</button>
+    </form>
+</div>
+
+{% endblock %}

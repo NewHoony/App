@@ -1,0 +1,38 @@
+html,body {
+    position: relative;
+    height: 100%;
+    font-family: 'Fredoka One', cursive;
+  }
+
+body {
+    background-color: black;
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0;
+  }
+
+header {
+        height: 30%;
+        background-image: url(/static/assets/main_header.jpg);
+        background-size: cover;
+        width: 100%;
+        position: absolute;
+        z-index: 100;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 1rem;
+  }
+
+.card {
+  border: 1px solid #fff;
+  background-color: transparent;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0rem;
+  }
+
+.card-body {
+  padding: 0; /* remove default padding */
+  }

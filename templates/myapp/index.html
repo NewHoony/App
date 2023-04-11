@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block con %}
+    <div class ="container" style="padding-top: 300px; padding-bottom: 10px; color: white;">
+        <div class="text-center">
+            <h1>Music Sheet</h1>
+            <a href="{% url 'myapp:create' %}"><button class="btn btn-outline-light" style="float: right;">ADD</button></a>
+        </div>
+        <div class="container" style="display: flex;">
+            <div class="col-12">
+                <div style="color: white;">
+                    <div class="card-grid">
+                        {% for book in books %}
+                            <div class="card" style="width: 250px; height: auto; background-color: black;">
+                                <div class="card-body">
+                                    {% if book.book_cover %}
+                                        <img src="{{ book.book_cover.url }}" class="card-img-top" alt="{{ book.name }}" width="100%" height="100%">
+                                    {% else %}
+                                        <span class="text-muted">No cover</span>
+                                    {% endif %}
+                                    <div class="card-text" style="height: auto; margin: 0.5rem 0; display: flex;">
+                                        {{ book.name }}
+                                        <a href="{{ book.book_pdf.url }}" class="btn btn-outline-light btn-sm" target="_blank" style="margin-left: 1rem;">PDF</a>
+                                        <form method="post" action="{% url 'myapp:delete' book.pk %}">
+                                            {% csrf_token %} 
+                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="margin-left: 0.5rem;">DEL</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}
