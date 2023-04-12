@@ -17,13 +17,16 @@
                                     {% else %}
                                         <span class="text-muted">No cover</span>
                                     {% endif %}
-                                    <div class="card-text" style="height: auto; margin: 0.5rem 0; display: flex;">
+                                    <div class="card-text" style="height: auto; margin: 0.5rem 0;">
                                         {{ book.name }}
-                                        <a href="{{ book.book_pdf.url }}" class="btn btn-outline-light btn-sm" target="_blank" style="margin-left: 1rem;">PDF</a>
-                                        <form method="post" action="{% url 'myapp:delete' book.pk %}">
-                                            {% csrf_token %} 
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" style="margin-left: 0.5rem;">DEL</button>
-                                        </form>
+                                        <div style="display: flex;">
+                                            <a href="{{ book.book_pdf.url }}" class="btn btn-outline-light btn-sm" target="_blank">PDF</a>
+                                            <a href="{% url 'myapp:update' book.pk %}"><button class="btn btn-outline-light btn-sm"  style="margin:0 0.3rem">Mod</button></a>
+                                            <form method="post" action="{% url 'myapp:delete' book.pk %}">
+                                                {% csrf_token %} 
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" style="margin-left: 4.5rem;">DEL</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
